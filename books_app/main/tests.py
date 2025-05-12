@@ -11,6 +11,16 @@ from datetime import date
 from books_app.extensions import app, db, bcrypt
 from books_app.models import Book, Author, User, Audience, Genre
 
+from books_app.extensions import bcrypt
+import books_app
+from books_app.extensions import app, db
+
+# Set configuration before any other imports
+app.config['TESTING'] = True
+app.config['WTF_CSRF_ENABLED'] = False
+app.config['DEBUG'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+
 """
 Run these tests with the command:
 python -m unittest books_app.main.tests
