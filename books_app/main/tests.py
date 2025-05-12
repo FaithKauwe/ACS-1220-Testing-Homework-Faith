@@ -112,11 +112,12 @@ class MainTests(unittest.TestCase):
 
     def test_book_detail_logged_out(self):
         """Test that the book appears on its detail page."""
-        # TODO: Use helper functions to create books, authors, user
+        # Use helper functions to create books, authors, user
         create_books()
         create_user()
+        login(self.app, 'me1', 'password')
 
-        # TODO: Make a GET request to the URL /book/1, check to see that the
+        # Make a GET request to the URL /book/1, check to see that the
         # status code is 200
         response = self.app.get('/book/1', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
